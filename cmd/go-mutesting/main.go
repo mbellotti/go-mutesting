@@ -362,7 +362,6 @@ func processFile(opts *options, tmpDir, file string, mutators []mutatorItem, mut
 func mutate(opts *options, mutators []mutatorItem, mutationBlackList map[string]struct{}, mutationID int, pkg *types.Package, info *types.Info, file string, fset *token.FileSet, src ast.Node, node ast.Node, tmpFile string, execs []string, stats *mutationStats) int {
 	for _, m := range mutators {
 		debug(opts, "Mutator %s", m.Name)
-
 		changed := mutesting.MutateWalk(pkg, info, node, m.Mutator)
 
 		for {
