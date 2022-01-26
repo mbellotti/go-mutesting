@@ -26,6 +26,10 @@ func MutatorElse(pkg *types.Package, info *types.Info, node ast.Node) []mutator.
 
 	old := n.Else
 
+	if !mutator.CheckForPanic([]ast.Stmt{old}) {
+		return nil
+	}
+
 	return []mutator.Mutation{
 		{
 			Change: func() {
